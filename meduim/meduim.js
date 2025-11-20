@@ -801,11 +801,13 @@ getEmployeesWithMoreThanTwoSkills();
 // --- 4 ---
 
 function getEmployeesByLastNameInitial(search) {
+  let arr = []
   for (let i = 0; i < employees.length; i++) {
     if (employees[i].firstName[0] === search) {
-      console.log(employees[i]);
+      arr.push(employees[i])
     }
   }
+  console.log(arr)
 }
 getEmployeesByLastNameInitial("L");
 
@@ -855,12 +857,14 @@ calculateAverageSalaryByDepartment()
 // --- 6 ---
 
 function getEmployeesJoinedAfterYear(year){
+  let arr = []
   for (let i = 0; i < employees.length; i++) {
     let transform = Number(employees[i].joinDate.slice(0, 4))
     if ( transform > year) {
-      console.log(employees[i])
+      arr.push(employees[i])
     }
   }
+  console.log(arr)
 }
 
 getEmployeesJoinedAfterYear(2020)
@@ -870,17 +874,32 @@ getEmployeesJoinedAfterYear(2020)
 
 
 function getMultilingualEmployees(num){
+  let arr = []
   for (let i = 0; i < employees.length; i++) {
     if(employees[i].languages.length > num){
-      console.log(employees[i])
-      langc++
+      arr.push(employees[i])
     }
   }
+  console.log(arr)
 }
 
 getMultilingualEmployees(2)
 
 
 // --- 8 ---
+
+// --- 9 ---
+
+function getHighEarningEmployees(num){
+  let arr = []
+  for (let i = 0; i < employees.length; i++) {
+    if(employees[i].salary > num){
+      arr.push(employees[i])
+    }
+  }
+  console.log(arr)
+}
+
+getHighEarningEmployees(60000)
 
 

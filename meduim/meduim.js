@@ -777,28 +777,110 @@ countEnglishSpeakingEmployees("English");
 // --- 2 ---
 
 function getEmployeesByProject(search) {
-
   for (let i = 0; i < employees.length; i++) {
     if (employees[i].projects.includes(search)) {
-        console.log(employees[i])
+      console.log(employees[i]);
     }
   }
 }
 
-
-getEmployeesByProject("Project Gamma")
-
+getEmployeesByProject("Project Gamma");
 
 // --- 3 ---
 
-
-function getEmployeesWithMoreThanTwoSkills(){
-
-    for (let i = 0; i < employees.length; i++){
-        if(employees[i].skills.length > 1){
-            console.log(employees[i])
-        }
+function getEmployeesWithMoreThanTwoSkills() {
+  for (let i = 0; i < employees.length; i++) {
+    if (employees[i].skills.length > 1) {
+      console.log(employees[i]);
     }
+  }
 }
 
-getEmployeesWithMoreThanTwoSkills()
+getEmployeesWithMoreThanTwoSkills();
+
+// --- 4 ---
+
+function getEmployeesByLastNameInitial(search) {
+  for (let i = 0; i < employees.length; i++) {
+    if (employees[i].firstName[0] === search) {
+      console.log(employees[i]);
+    }
+  }
+}
+getEmployeesByLastNameInitial("L");
+
+// --- 5 ---
+
+function calculateAverageSalaryByDepartment() {
+  const obj = {};
+  let devsalary = 0;
+  let devcounter = 0;
+  let designSalary = 0;
+  let designCounter = 0;
+  let managementSalary = 0;
+  let managmentCounter = 0;
+  let marketingsalary = 0;
+  let marketingCounter = 0;
+  for (let i = 0; i < employees.length; i++) {
+    if (employees[i].department.includes("Développement")) {
+      devsalary += employees[i].salary;
+      devcounter++;
+    } else if (employees[i].department.includes("Design")) {
+      designSalary += employees[i].salary;
+      designCounter++;
+    } else if (employees[i].department.includes("Management")) {
+      managementSalary += employees[i].salary;
+      managmentCounter++;
+    } else if (employees[i].department.includes("Marketing")) {
+      marketingsalary += employees[i].salary;
+      marketingCounter++;
+    }
+  }
+
+  let avDevsalary = `Développement: ${devsalary / devcounter}`;
+  let avDesignSalary = `Design: ${designSalary / designCounter}`;
+  let avmanagementSalary = `Management: ${managementSalary / managmentCounter}`;
+  let avmarketingsalary = `Marketing: ${marketingsalary / marketingCounter}`;
+  obj.Développement = avDevsalary;
+  obj.Design = avDesignSalary;
+  obj.Management = avmanagementSalary;
+  obj.Marketing = avmarketingsalary;
+
+  console.log(obj)
+}
+
+calculateAverageSalaryByDepartment()
+
+
+// --- 6 ---
+
+function getEmployeesJoinedAfterYear(year){
+  for (let i = 0; i < employees.length; i++) {
+    let transform = Number(employees[i].joinDate.slice(0, 4))
+    if ( transform > year) {
+      console.log(employees[i])
+    }
+  }
+}
+
+getEmployeesJoinedAfterYear(2020)
+
+
+// --- 7 ---
+
+
+function getMultilingualEmployees(num){
+  for (let i = 0; i < employees.length; i++) {
+    if(employees[i].languages.length > num){
+      console.log(employees[i])
+      langc++
+    }
+  }
+}
+
+getMultilingualEmployees(2)
+
+
+// --- 8 ---
+
+

@@ -762,188 +762,26 @@ const employees = [
   },
 ];
 
-function countEnglishSpeakingEmployees(lang) {
-  let counter = 0;
-  for (let i = 0; i < employees.length; i++) {
-    if (employees[i].languages.includes(lang)) {
-      counter++;
-    }
-  }
-  console.log(counter);
-}
+const employeesTbody = document.getElementById("employees-tbody");
+const switchBtn = document.getElementById("switchBtn");
+const employeesContainer = document.getElementById("employees-container");
+const employees_table = document.getElementById("employees-table");
 
-// countEnglishSpeakingEmployees("English");
-
-// --- 2 ---
-
-function getEmployeesByProject(search) {
-  for (let i = 0; i < employees.length; i++) {
-    if (employees[i].projects.includes(search)) {
-      console.log(employees[i]);
-    }
-  }
-}
-
-// getEmployeesByProject("Project Gamma");
-
-// --- 3 ---
-
-function getEmployeesWithMoreThanTwoSkills() {
-  for (let i = 0; i < employees.length; i++) {
-    if (employees[i].skills.length > 1) {
-      console.log(employees[i]);
-    }
-  }
-}
-
-// getEmployeesWithMoreThanTwoSkills();
-
-// --- 4 ---
-
-function getEmployeesByLastNameInitial(search) {
-  let arr = [];
-  for (let i = 0; i < employees.length; i++) {
-    if (employees[i].firstName[0] === search) {
-      arr.push(employees[i]);
-    }
-  }
-  console.log(arr);
-}
-// getEmployeesByLastNameInitial("L");
-
-// --- 5 ---
-
-function calculateAverageSalaryByDepartment() {
-  const obj = {};
-  let devsalary = 0;
-  let devcounter = 0;
-  let designSalary = 0;
-  let designCounter = 0;
-  let managementSalary = 0;
-  let managmentCounter = 0;
-  let marketingsalary = 0;
-  let marketingCounter = 0;
-  for (let i = 0; i < employees.length; i++) {
-    if (employees[i].department.includes("Développement")) {
-      devsalary += employees[i].salary;
-      devcounter++;
-    } else if (employees[i].department.includes("Design")) {
-      designSalary += employees[i].salary;
-      designCounter++;
-    } else if (employees[i].department.includes("Management")) {
-      managementSalary += employees[i].salary;
-      managmentCounter++;
-    } else if (employees[i].department.includes("Marketing")) {
-      marketingsalary += employees[i].salary;
-      marketingCounter++;
-    }
-  }
-
-  let avDevsalary = `Développement: ${devsalary / devcounter}`;
-  let avDesignSalary = `Design: ${designSalary / designCounter}`;
-  let avmanagementSalary = `Management: ${managementSalary / managmentCounter}`;
-  let avmarketingsalary = `Marketing: ${marketingsalary / marketingCounter}`;
-  obj.Développement = avDevsalary;
-  obj.Design = avDesignSalary;
-  obj.Management = avmanagementSalary;
-  obj.Marketing = avmarketingsalary;
-
-  console.log(obj);
-}
-
-calculateAverageSalaryByDepartment()
-
-// --- 6 ---
-
-function getEmployeesJoinedAfterYear(year) {
-  let arr = [];
-  for (let i = 0; i < employees.length; i++) {
-    let transform = Number(employees[i].joinDate.slice(0, 4));
-    if (transform > year) {
-      arr.push(employees[i]);
-    }
-  }
-  console.log(arr);
-}
-
-// getEmployeesJoinedAfterYear(2020)
-
-// --- 7 ---
-
-function getMultilingualEmployees(num) {
-  let arr = [];
-  for (let i = 0; i < employees.length; i++) {
-    if (employees[i].languages.length > num) {
-      arr.push(employees[i]);
-    }
-  }
-  console.log(arr);
-}
-
-// getMultilingualEmployees(2)
-
-// --- 8 ---
-
-// --- 9 ---
-
-function getHighEarningEmployees(num) {
-  let arr = [];
-  for (let i = 0; i < employees.length; i++) {
-    if (employees[i].salary > num) {
-      arr.push(employees[i]);
-    }
-  }
-  console.log(arr);
-}
-
-// getHighEarningEmployees(60000)
-
-//--- 10 ---
-
-function getLongestServingEmployee() {
-
-  let earliestDate = Number(employees[0].joinDate.split("-").join(""));
-  let longestServingEmployee = employees[0];
-
-  for (let i = 1; i < employees.length; i++) {
-    const currentEmployee = employees[i];
-    let date = currentEmployee.joinDate.split("-");
-    let currentDate = Number(date.join(""));
-    
-    if (currentDate < earliestDate) {
-      earliestDate = currentDate;
-      longestServingEmployee = currentEmployee;
-    }
-  }
-
-  console.log(longestServingEmployee);
-}
-// getLongestServingEmployee();
+switchBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  console.log("test");
+  employees_table.classList.add("hidden")
+});
 
 
-// --- 12 ---
-
-
-function countEmployeesByDepartment(){
-  let devc = 0
-  let designc = 0
-  let marketingc = 0
-  let managementc = 0
-  let obj = {}
-  for (let i = 1; i < employees.length; i++){
-    if(employees[i].department == "Développement"){
-      devc++
-    }
-    else if(employees[i].department == "Design"){
-      designc++
-    }
-    else if(employees[i].department == "Marketing"){
-      marketingc++
-    }
-    else if(employees[i].department == "Management"){
-      managementc++
-    }
-  }
-
-  obj.Développement
-}
+employees.forEach((employee) => {
+  const list = document.createElement("tr");
+  list.innerHTML = `
+        <td>${employee.firstName}</td>
+        <td>${employee.lastName}</td>
+        <td>${employee.department}</td>
+        <td>${employee.position}</td>
+        <td>${employee.salary}</td>
+  `;
+  employeesTbody.appendChild(list);
+});

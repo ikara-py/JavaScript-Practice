@@ -772,7 +772,7 @@ function countEnglishSpeakingEmployees(lang) {
   console.log(counter);
 }
 
-countEnglishSpeakingEmployees("English");
+// countEnglishSpeakingEmployees("English");
 
 // --- 2 ---
 
@@ -784,7 +784,7 @@ function getEmployeesByProject(search) {
   }
 }
 
-getEmployeesByProject("Project Gamma");
+// getEmployeesByProject("Project Gamma");
 
 // --- 3 ---
 
@@ -796,20 +796,20 @@ function getEmployeesWithMoreThanTwoSkills() {
   }
 }
 
-getEmployeesWithMoreThanTwoSkills();
+// getEmployeesWithMoreThanTwoSkills();
 
 // --- 4 ---
 
 function getEmployeesByLastNameInitial(search) {
-  let arr = []
+  let arr = [];
   for (let i = 0; i < employees.length; i++) {
     if (employees[i].firstName[0] === search) {
-      arr.push(employees[i])
+      arr.push(employees[i]);
     }
   }
-  console.log(arr)
+  console.log(arr);
 }
-getEmployeesByLastNameInitial("L");
+// getEmployeesByLastNameInitial("L");
 
 // --- 5 ---
 
@@ -848,58 +848,74 @@ function calculateAverageSalaryByDepartment() {
   obj.Management = avmanagementSalary;
   obj.Marketing = avmarketingsalary;
 
-  console.log(obj)
+  console.log(obj);
 }
 
-calculateAverageSalaryByDepartment()
-
+// calculateAverageSalaryByDepartment()
 
 // --- 6 ---
 
-function getEmployeesJoinedAfterYear(year){
-  let arr = []
+function getEmployeesJoinedAfterYear(year) {
+  let arr = [];
   for (let i = 0; i < employees.length; i++) {
-    let transform = Number(employees[i].joinDate.slice(0, 4))
-    if ( transform > year) {
-      arr.push(employees[i])
+    let transform = Number(employees[i].joinDate.slice(0, 4));
+    if (transform > year) {
+      arr.push(employees[i]);
     }
   }
-  console.log(arr)
+  console.log(arr);
 }
 
-getEmployeesJoinedAfterYear(2020)
-
+// getEmployeesJoinedAfterYear(2020)
 
 // --- 7 ---
 
-
-function getMultilingualEmployees(num){
-  let arr = []
+function getMultilingualEmployees(num) {
+  let arr = [];
   for (let i = 0; i < employees.length; i++) {
-    if(employees[i].languages.length > num){
-      arr.push(employees[i])
+    if (employees[i].languages.length > num) {
+      arr.push(employees[i]);
     }
   }
-  console.log(arr)
+  console.log(arr);
 }
 
-getMultilingualEmployees(2)
-
+// getMultilingualEmployees(2)
 
 // --- 8 ---
 
 // --- 9 ---
 
-function getHighEarningEmployees(num){
-  let arr = []
+function getHighEarningEmployees(num) {
+  let arr = [];
   for (let i = 0; i < employees.length; i++) {
-    if(employees[i].salary > num){
-      arr.push(employees[i])
+    if (employees[i].salary > num) {
+      arr.push(employees[i]);
     }
   }
-  console.log(arr)
+  console.log(arr);
 }
 
-getHighEarningEmployees(60000)
+// getHighEarningEmployees(60000)
 
+//--- 10 ---
 
+function getLongestServingEmployee() {
+
+  let earliestDate = Number(employees[0].joinDate.split("-").join(""));
+  let longestServingEmployee = employees[0];
+
+  for (let i = 1; i < employees.length; i++) {
+    const currentEmployee = employees[i];
+    let date = currentEmployee.joinDate.split("-");
+    let currentDate = Number(date.join(""));
+    
+    if (currentDate < earliestDate) {
+      earliestDate = currentDate;
+      longestServingEmployee = currentEmployee;
+    }
+  }
+
+  console.log(longestServingEmployee);
+}
+getLongestServingEmployee();

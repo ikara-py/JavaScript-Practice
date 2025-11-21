@@ -770,9 +770,8 @@ const employees_table = document.getElementById("employees-table");
 switchBtn.addEventListener("click", (e) => {
   e.preventDefault();
   console.log("test");
-  employees_table.classList.add("hidden")
+  employees_table.classList.add("hidden");
 });
-
 
 employees.forEach((employee) => {
   const list = document.createElement("tr");
@@ -785,3 +784,38 @@ employees.forEach((employee) => {
   `;
   employeesTbody.appendChild(list);
 });
+
+const submitBtn = document.getElementById("submitBtn");
+const skillBtn = document.getElementById("add-skill-btn");
+const lastName = document.getElementById("lastName");
+const firstName = document.getElementById("firstName");
+const age = document.getElementById("age");
+const department = document.getElementById("department");
+
+submitBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  console.log("test");
+  obj.id = new Date();
+  obj.firstName = firstName.value;
+  obj.lastName = lastName.value;
+  obj.age = age.value;
+  obj.department = department.value;
+  console.log(obj);
+
+  const list = document.createElement("tr");
+  list.innerHTML = `
+        <td>${obj.firstName}</td>
+        <td>${obj.lastName}</td>
+        <td>${obj.department}</td>
+        <td>${obj.position}</td>
+        <td>${obj.age}</td>
+  `;
+  employeesTbody.appendChild(list);
+});
+
+skillBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  console.log("test");
+});
+let obj = {};
+

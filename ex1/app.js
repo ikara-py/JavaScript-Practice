@@ -795,7 +795,8 @@ const department = document.getElementById("department");
 submitBtn.addEventListener("click", (e) => {
   e.preventDefault();
   console.log("test");
-  obj.id = new Date();
+  obj.id = Date.now();
+
   obj.firstName = firstName.value;
   obj.lastName = lastName.value;
   obj.age = age.value;
@@ -818,4 +819,3 @@ skillBtn.addEventListener("click", (e) => {
   console.log("test");
 });
 let obj = {};
-
